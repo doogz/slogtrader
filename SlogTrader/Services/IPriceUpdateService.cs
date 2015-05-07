@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 
 namespace SlogTrader.Services
 {
-    interface IInstrumentPriceUpdateService
+    interface IPriceUpdateService
     {
-
+        bool SubscribeToPriceUpdates(string instrument);
+        bool Unsubscribe();
     }
 }
