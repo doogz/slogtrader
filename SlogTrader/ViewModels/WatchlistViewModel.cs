@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SlogTrader.ViewModels
 {
-    class WatchlistViewModel
+    public class WatchlistViewModel
     {
     }
 }

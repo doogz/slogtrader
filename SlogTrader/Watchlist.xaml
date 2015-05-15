@@ -51,7 +51,6 @@
                 <DataGridTextColumn Header="Net Change" Binding="{Binding}"/>
                 <DataGridTextColumn Header="% Change" Binding="{Binding}"/>
                 <DataGridTextColumn Header="Last Updated" Binding="{Binding}"/>
-                <DataGridTextColumn Header="Currency" Binding="{Binding}"/>
             </DataGrid.Columns>
         </DataGrid>
         <!-- Note. ST2 also supports instrument grouping. -->

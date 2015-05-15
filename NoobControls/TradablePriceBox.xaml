@@ -1,0 +1,84 @@
+﻿<UserControl x:Class="NoobControls.TradablePriceBox"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:nbctrls="clr-namespace:NoobControls"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+
+
+    <!-- Three explicit text font 'styles' are specified here-->
+    <UserControl.Resources>
+        <Style x:Key="RegularText" TargetType="{x:Type TextBlock}">
+            <Setter Value="20" Property="FontSize"></Setter>
+        </Style>
+        <Style x:Key="BoldText" TargetType="{x:Type TextBlock}">
+            <Setter Value="20" Property="FontSize"></Setter>
+            <Setter Property="FontWeight" Value="Bold"></Setter>
+        </Style>
+
+        <Style x:Key="LargeText" TargetType="{x:Type TextBlock}">
+            <Setter Value="40" Property="FontSize"></Setter>
+            <Setter Property="FontWeight" Value="Bold"></Setter>
+        </Style>
+        <LinearGradientBrush x:Key="BackgroundGradientBrush" StartPoint="0,0" EndPoint="0,1">
+            <LinearGradientBrush.GradientStops>
+                <GradientStop Offset="0.0" Color="PaleGreen"></GradientStop>
+                <GradientStop Offset="1.0" Color="Green"></GradientStop>
+
+            </LinearGradientBrush.GradientStops>
+        </LinearGradientBrush>
+    </UserControl.Resources>
+
+    <!-- The goal here is to produce a top line e.g. "Bid", with a rectangle underneath it, containing the remaining elements.
+    A vertically-oriented stackpanel would suffice, although it'd have to use some kind of fixed-size height for the top row.
+    It's perhaps better to use a proportionate grid - ? -->
+
+    <Grid ShowGridLines="False" Background="{StaticResource BackgroundGradientBrush}" >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="4*"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Grid.Row="0" Style="{StaticResource RegularText}">Bid</TextBlock>
+        <Border Grid.Row="1" Margin="5" CornerRadius="30" Padding="10" BorderBrush="DarkGreen" BorderThickness="3">
+
+            <Grid Grid.Row="1" ShowGridLines="False" TextElement.FontSize="2">
+
+                <Grid.RowDefinitions>
+
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="2*"/>
+                    <RowDefinition Height="*"/>
+
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="2*"/>
+                    <ColumnDefinition Width="3*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <!-- <TextBlock Grid.Row="0" Grid.Column="0" Style="{StaticResource RegularText}">Bid</TextBlock> -->
+                <TextBlock Grid.Row="0" Grid.Column="0" HorizontalAlignment="Center" Style="{StaticResource BoldText}">1.07</TextBlock>
+                <nbctrls:PriceArrow Grid.Row="0" Grid.Column="2"/>
+
+                <!-- 
+            After a bit of searching, it seems the neatest way to get two lines of text to align is by wrapping them in an outer textblock
+            -->
+                <TextBlock Grid.Row="1" Grid.Column="1" HorizontalAlignment="Left" Grid.ColumnSpan="2">
+                <!-- <TextBlock Style="{StaticResource LargeText}">33</TextBlock> -->
+                <TextBlock Style="{StaticResource LargeText}">33</TextBlock>
+                <TextBlock Style ="{StaticResource BoldText}">5</TextBlock>
+            </TextBlock>
+
+                <!-- Grid.Row="3" Grid.Column="0" Style="{StaticResource RegularText}"> -->
+                <TextBlock Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Style="{StaticResource RegularText}">
+                <Hyperlink>Enable</Hyperlink>
+                </TextBlock>
+            </Grid>
+        </Border>
+    </Grid>
+
+
+</UserControl>

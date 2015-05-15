@@ -41,7 +41,7 @@ namespace SlogTrader.Model
             {
                 // Base currency
                 string code = Id.Substring(0, 3);
-                return new Currency
+                return null; //new Currency
             }
         }
 
