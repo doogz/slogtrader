@@ -20,7 +20,7 @@ namespace FinancialTradingService.Instrument
     /// (1) DO NOT provide a default constructor for a struct.
     /// (2) DO NOT enable public mutators - all property 'set's are private
     /// (3) Ensure all-zeros default layout is 'valid'
-    /// (4) Implement IEquatable<T>
+    /// (4) Implement IEquatable<T>  - that is, provide type-specific .Equals( T )
     /// 
     /// Furthermore, I'll be be keeping my eye out on where and how often this type is exposed, as we won't want lots of value copying.
     /// 
@@ -57,7 +57,12 @@ namespace FinancialTradingService.Instrument
         /// </summary>
         public DateTime Timestamp { get; private set; }
 
+        public override bool Equals(object o)
+        {
+            return (o is PricePoint) && Equals( (PricePoint) o);
+        }
         public bool Equals(PricePoint other)
+        
         {
             return AskPrice == other.AskPrice && BidPrice == other.BidPrice && Timestamp == other.Timestamp;
         }

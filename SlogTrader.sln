@@ -11,6 +11,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PriceUpdateConsole", "Price
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FinancialTradingService", "PriceUpdateConsole\FinancialTradingService\FinancialTradingService.csproj", "{067A2EF0-5B47-479F-A894-403ED254D6BE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CDConsole", "CDConsole\CDConsole\CDConsole.csproj", "{DA8BD95B-3052-4B1C-BB9A-0C47E08B619B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CountdownNumbersGameSolver", "CDConsole\CountdownNumbersGameSolver\CountdownNumbersGameSolver.csproj", "{BC4D0096-7745-4702-8C92-3303BB61AEDC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +37,14 @@ Global
 		{067A2EF0-5B47-479F-A894-403ED254D6BE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{067A2EF0-5B47-479F-A894-403ED254D6BE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{067A2EF0-5B47-479F-A894-403ED254D6BE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DA8BD95B-3052-4B1C-BB9A-0C47E08B619B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DA8BD95B-3052-4B1C-BB9A-0C47E08B619B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DA8BD95B-3052-4B1C-BB9A-0C47E08B619B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DA8BD95B-3052-4B1C-BB9A-0C47E08B619B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BC4D0096-7745-4702-8C92-3303BB61AEDC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BC4D0096-7745-4702-8C92-3303BB61AEDC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BC4D0096-7745-4702-8C92-3303BB61AEDC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BC4D0096-7745-4702-8C92-3303BB61AEDC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
