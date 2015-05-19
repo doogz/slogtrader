@@ -10,7 +10,11 @@ namespace FinancialTradingService
 {
     class DemoFinancialTradingSession : IFinancialTradingSession
     {
-        private readonly Dictionary<string, List<IPriceUpdateReceiver>> _priceUpdateSubscribers = new Dictionary<string, List<IPriceUpdateReceiver>>();
+
+        public IInstrument[] GetInstruments(string filter)
+        {
+            return InstrumentCatalogue.ToArray();
+        }
 
         /// <summary>
         /// Registers clients for callback notifications when price updates occur for the selected instrument.
@@ -30,20 +34,14 @@ namespace FinancialTradingService
 
             var checkInst = InstrumentCatalogue.Find(instrument);
             if (checkInst == null)
+            {
+                Console.WriteLine("Instrument {0} is not available.", instrument);
                 return false;
-
-            // Do we already have a bunch of subscribers for this instrument?
-            var instrumentSubscribers = _priceUpdateSubscribers[instrument];
-            if (instrumentSubscribers != null)
-            {
-                instrumentSubscribers.Add(priceUpdateReceiver);
             }
-            else
-            {
-                // ReSharper turns a two line new List();List.Add into a one liner using a 'collection initializer'.
-                _priceUpdateSubscribers.Add(instrument, new List<IPriceUpdateReceiver> { priceUpdateReceiver });
-            }
+           
+            checkInst.SubscribeToPriceUpdates(priceUpdateReceiver);
             return true;
+
         }
 
         /// <summary>
@@ -56,33 +54,18 @@ namespace FinancialTradingService
         public bool UnsubscribeFromPriceUpdates(string instrument, IPriceUpdateReceiver priceUpdateReceiver)
         {
             if (string.IsNullOrEmpty(instrument)) return false;
-            var instrumentSubscribers = _priceUpdateSubscribers[instrument];
-            // TODO: Once ReSharper's had it's way, you do end up with pretty terse code:
-            // Personally, I like that.
-            return instrumentSubscribers != null && instrumentSubscribers.Remove(priceUpdateReceiver);
+            var checkInst = InstrumentCatalogue.Find(instrument);
+            if (checkInst == null)
+            {
+                Console.WriteLine("Instrument {0} is not defined.", instrument);
+                return false;
+            }
 
-            // Note: This code is currently leaving an empty List<IPriceUpdateReceiver> in place
+            checkInst.SubscribeToPriceUpdates(priceUpdateReceiver);
+            return true;
         }
 
-        public IInstrumentDefinition[] GetInstruments(string filter)
-        {
-            return _stockInstruments;
-            // TODO: Build some forex instruments in code (from simulated currencies), and append here
-        }
-
-        /// <summary>
-        /// Bit weird 'TheInstruments'
-        /// </summary>
-        /// TODO: Resharper would have this private static readonly field as TheInstruments - ???
-        private static readonly IInstrumentDefinition[] _stockInstruments =
-        {
-            new StockInstrument("MSFT", "Microsoft Corp."),
-            new StockInstrument("AAPL", "Apple Inc."),
-            new StockInstrument("GOOG", "Google Inc."),
-            new StockInstrument("FB", "Facebook Inc."),
-            new StockInstrument("INTC", "Intel Corporation")
-
-        };
+   
 
     }
 }

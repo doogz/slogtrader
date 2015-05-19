@@ -2,6 +2,10 @@
 
 namespace FinancialTradingService.Instruments
 {
+    /// <summary>
+    /// Forex instruments are constructed from the relative strengths of two currencies
+    /// We can access these currencies via the IForexInstrument interface (when supported)
+    /// </summary>
     internal interface IForexInstrument
     {
         string BaseCurrencySymbol { get; }
@@ -29,7 +33,10 @@ namespace FinancialTradingService.Instruments
         }
 
 
-
+        /// <summary>
+        /// A description for a Forex instrument can be generated from the two currency codes
+        /// comprising the instrument's symbol.
+        /// </summary>
         public override string Description
         {
             // A forex instrument's description is defined by its two currencies, and a static method exists to get to this easily.

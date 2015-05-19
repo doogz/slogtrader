@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using FinancialTradingService.Instrument;
 using FinancialTradingService.Model;
 
@@ -12,11 +13,19 @@ namespace FinancialTradingService
     }
 
     // Class marked public for consumption by subclasses elsewhere
-    public abstract class BaseInstrument : IInstrumentDefinition
+    public abstract class BaseInstrument : IInstrument
     {
-        // ReSharper IS clever. This is clearly fine as a read-only field (Like worrit sed)
         private readonly Market _market;
         private readonly string _symbol;
+
+        // For drawing charts, we'll need a history of price points:
+        private readonly PriceHistory _history = new PriceHistory();
+
+        // For notifying interested parties, we maintain a list of price update subscripbers, and service
+        // them during the UpdatePricing method
+        private readonly List<IPriceUpdateReceiver> _priceUpdateSubscribers = new List<IPriceUpdateReceiver>();
+
+
         protected BaseInstrument(string symbol, Market market) // Intended as base class only. 
         {
             _symbol = symbol;
@@ -34,17 +43,42 @@ namespace FinancialTradingService
 
         /// <summary>
         /// BaseInstrument expects concrete implementations to provide a Description
-        /// 
+        /// e.g. Forex uses the currency codes (embedded within the instrument code)
         /// </summary>
         public abstract string Description { get; }     // 
 
         private decimal _bidPrice;
         private decimal _askPrice;
 
-        public void UpdatePricing(decimal bidPrice, decimal askPrice)
+        public void UpdatePricing(decimal bidPrice, decimal askPrice, DateTime timestamp)
         {
+            // Add price point to history
+            PricePoint p=new PricePoint(bidPrice, askPrice, timestamp);
+            _history.AddPoint(ref p);
+
+            // and update current values
             CurrentBidPrice = bidPrice;
             CurrentAskPrice = askPrice;
+
+            // Finally, let any interested clients know
+            var priceUpdate = new PriceUpdate(Symbol, bidPrice, askPrice, timestamp);
+            NotifySubscribers(priceUpdate);
+        }
+
+        public void SubscribeToPriceUpdates(IPriceUpdateReceiver updateReceiver)
+        {
+            _priceUpdateSubscribers.Add(updateReceiver);
+        }
+
+        public void UnsubscribeFromPriceUpdates(IPriceUpdateReceiver updateReceiver)
+        {
+            _priceUpdateSubscribers.Remove(updateReceiver);
+        }
+
+        protected void NotifySubscribers(IPriceUpdate priceUpdate)
+        {
+            foreach (var c in _priceUpdateSubscribers)
+                c.OnPriceUpdate(priceUpdate);
         }
 
         /// <summary>

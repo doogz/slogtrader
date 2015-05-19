@@ -20,6 +20,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <RunCodeAnalysis>true</RunCodeAnalysis>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -39,7 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BaseInstrument.cs" />
+    <Compile Include="Instrument\BaseInstrument.cs" />
     <Compile Include="Instrument\PriceHistory.cs" />
     <Compile Include="Instrument\PricePoint.cs" />
     <Compile Include="Instrument\StockInstrument.cs" />
@@ -50,12 +51,10 @@
     <Compile Include="Instrument\ForexInstrument.cs" />
     <Compile Include="IFinancialTradingService.cs" />
     <Compile Include="IFinancialTradingSession.cs" />
-    <Compile Include="Instrument\IInstrumentDefinition.cs" />
+    <Compile Include="Instrument\IInstrument.cs" />
     <Compile Include="IPriceUpdateReceiver.cs" />
     <Compile Include="IPriceUpdate.cs" />
     <Compile Include="Model\InstrumentCatalogue.cs" />
-    <Compile Include="Model\WatchedInstrument.cs" />
-    <Compile Include="Model\Watchlist.cs" />
     <Compile Include="PriceChangeSimulator.cs" />
     <Compile Include="PriceUpdate.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

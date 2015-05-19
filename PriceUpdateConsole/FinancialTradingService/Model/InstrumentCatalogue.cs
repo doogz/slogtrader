@@ -9,18 +9,19 @@ namespace FinancialTradingService.Model
     /// The (static) instrument catalogue comprises the complete collection of financial instruments offered for sale via the trading service.
     /// General information (defined by the IInstrumentDefinition interface) is cached here in the catalogue. 
     ///
-    /// Live pricing data is not available. Such information is collected by the Watchlist and WatchedInstrument classes.
     ///
     /// TODO: Review
     /// Containment of a collection class is preferred to inheriting from it. 
     /// Dictionary<> fits the bill here, we have a collection uniquely indexed by a symbolic code (Symbol)
-    /// and frequent look-ups are anticipated.
+    /// and frequent look-ups are anticipated. We note the repetition of Symbol field as Key and within Value.
+    /// Alternatives - SortedList<K,V>, SortedDictionary<> ? Something without the repetition? Or do we not care, because it's just one
+    /// additional reference (to the Symbol string)?
 
     /// </summary>
     public static class InstrumentCatalogue
     {
-        // Read-only internal dictionary
-        private static readonly Dictionary<string, IInstrumentDefinition> _catalogue=new Dictionary<string, IInstrumentDefinition>();
+        // Read-only internal dictionary. Supports O(log n) lookup of Instrument
+        private static readonly Dictionary<string, IInstrument> _catalogue=new Dictionary<string, IInstrument>();
 
 
         /// <summary>
@@ -30,21 +31,41 @@ namespace FinancialTradingService.Model
         /// </summary>
         /// <param name="instrument">Reference to instrument implementing IInstrumentDefinition</param>
         /// <returns></returns>
-        public static void Add(IInstrumentDefinition instrument)
+        public static void Add(IInstrument instrument)
         {
-            _catalogue.Add(instrument.Symbol, instrument); // Can throw
+            lock (_catalogue)
+            {
+                _catalogue.Add(instrument.Symbol, instrument); // Can throw
+            }
         }
 
         public static void Remove(string instrumentSymbol)
         {
-            _catalogue.Remove(instrumentSymbol);
+            lock (_catalogue)
+            {
+                _catalogue.Remove(instrumentSymbol);
+            }
         }
 
-        public static IInstrumentDefinition Find(string symbol)
+        public static IInstrument[] ToArray()
         {
-            IInstrumentDefinition ins;
-            return _catalogue.TryGetValue(symbol, out ins) ? ins : null;
+            IInstrument[] ret;
+            lock (_catalogue)
+            {
+                ret = _catalogue.Values.ToArray();
+            }
+            return ret;
         }
+
+        public static IInstrument Find(string symbol)
+        {
+            lock (_catalogue)
+            {
+                IInstrument ins;
+                return _catalogue.TryGetValue(symbol, out ins) ? ins : null;
+            }
+        }
+
         /// <summary>
         /// Fast description look-up method.
         /// </summary>
@@ -52,8 +73,29 @@ namespace FinancialTradingService.Model
         /// <returns></returns>
         public static string GetDescription(string symbol)
         {
-            IInstrumentDefinition ins;
-            return _catalogue.TryGetValue(symbol, out ins) ? ins.Description : string.Format("Unknown instrument {0}", symbol);
+            lock (_catalogue)
+            {
+                IInstrument ins;
+                return _catalogue.TryGetValue(symbol, out ins)
+                    ? ins.Description
+                    : string.Format("Unknown instrument {0}", symbol);
+            }
+        }
+
+        public static int Count
+        {
+            get
+            {
+                lock (_catalogue)
+                {
+                    return _catalogue.Count;
+                }
+            }
+        }
+
+        public static string SymbolFromIndex(int idx)
+        {
+            return _catalogue.Keys.ElementAt(idx);
         }
 
     }

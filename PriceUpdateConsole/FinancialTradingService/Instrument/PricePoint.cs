@@ -61,5 +61,15 @@ namespace FinancialTradingService.Instrument
         {
             return AskPrice == other.AskPrice && BidPrice == other.BidPrice && Timestamp == other.Timestamp;
         }
+
+        public static bool operator ==(PricePoint lhs, PricePoint rhs)
+        {
+            return lhs.Equals(rhs);
+        }
+
+        public static bool operator !=(PricePoint lhs, PricePoint rhs)
+        {
+            return !(lhs == rhs);
+        }
     }
 }

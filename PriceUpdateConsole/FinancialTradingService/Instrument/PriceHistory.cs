@@ -26,7 +26,8 @@ namespace FinancialTradingService.Instrument
         public void AddPointCheckTime(ref PricePoint p)
         {
             // Check we're adding price updates in sequential time
-            // Our assumption is that the price points in our collection are in time order
+            // Our assumption is that the price points in our collection are in time order.
+            // We *could* handle out-of-sequence points, inserting them in the correct position (but we don't)
             if (_points.Any())
                 if (_points[_points.Count-1].Timestamp > p.Timestamp )
                     throw new Exception( "The last price point in the sequence is more recent than the price point to add");
@@ -36,7 +37,7 @@ namespace FinancialTradingService.Instrument
         }
 
         /// <summary>
-        /// Convenice 'add' using individual values
+        /// Convenience 'add' using individual values
         /// </summary>
         /// <param name="ask"></param>
         /// <param name="bid"></param>

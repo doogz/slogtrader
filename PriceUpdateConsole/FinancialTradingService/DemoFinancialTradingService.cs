@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Threading;
+using FinancialTradingService.Instrument;
+using FinancialTradingService.Model;
 
 namespace FinancialTradingService
 {
@@ -14,11 +12,40 @@ namespace FinancialTradingService
     /// </summary>
     public class DemoFinancialTradingService : IFinancialTradingService
     {
+        /// <summary>
+        /// Private test data for loading Instrument Catalogue
+        /// </summary>
+        /// 
+        private static readonly IInstrument[] _stockInstruments =
+        {
+            new StockInstrument("MSFT", "Microsoft Corp.", 48.2m),
+            new StockInstrument("AAPL", "Apple Inc.", 128.7m),
+            new StockInstrument("GOOG", "Google Inc.", 533.8m),
+            new StockInstrument("FB", "Facebook Inc.", 80.4m),
+            new StockInstrument("INTC", "Intel Corporation", 32.9m)
+
+        };
+
+        private Thread _updateThread;
+
         public DemoFinancialTradingService()
         {
-            // Spin up our price adjustment thread. This thread alters the prices of our instruments randomly.
+            // Initialise the instrument catalogue
+            // (1) Add some stocks
+            foreach (var i in _stockInstruments)
+                InstrumentCatalogue.Add(i);
+            // (2) TODO: Add some Forex
+            // (3) Add CFDs
 
-            
+            // Spin up our price adjustment thread. This thread alters the prices of our instruments randomly.
+            _updateThread = new Thread(PriceChangeSimulator.Run) {Name = "Price adjustment thread"};
+            _updateThread.Start();
+
+        }
+
+        public void Stop()
+        {
+            PriceChangeSimulator.Stop();
         }
 
         public ServiceStatus CurrentStatus
@@ -46,15 +73,5 @@ namespace FinancialTradingService
 
             return null;
         }
-
-        /// I've chosen a fully-fledged separate thread object for the implementation, really just to take a look at System.Threading a bit,
-        /// although I think it's a reasonable design choice.
-        /// 
-        /// I know I can have time from the threads in the thread pool, driven by a timer - and that that might have been easier.
-        ///
-        /// But this thread will live as long as the service does, it has a single dedicated purpose (and thus a dedicated name too), and I deem it
-        /// worthy of its own thread.
-        /// 
-
     }
 }

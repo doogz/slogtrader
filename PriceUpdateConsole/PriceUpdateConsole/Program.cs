@@ -40,8 +40,13 @@ namespace PriceUpdateConsole
                 string response = Console.ReadLine();
                 if (response == null )
                     continue;
-                if ( response.ToUpper() == "Q")
+                response = response.ToUpper();
+                if (response == "Q")
+                {
+                    tradingService.Stop();
                     break;
+                }
+                    
 
                 serviceUp = tradingService.IsServiceUp;
                 if (serviceUp )
@@ -58,7 +63,7 @@ namespace PriceUpdateConsole
 
         public void OnPriceUpdate(IPriceUpdate update)
         {
-            Console.WriteLine("Symbol: {0}   Bid: {1}   Ask: {2}   Timestamp: {4}", update.Instrument, update.BidPrice,
+            Console.WriteLine("Symbol: {0}   Bid: {1}   Ask: {2}   Timestamp: {3}", update.Instrument, update.BidPrice,
                 update.AskPrice, update.ServerTimestamp);
         }
     }

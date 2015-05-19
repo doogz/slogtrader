@@ -64,7 +64,7 @@ namespace FinancialTradingService.Model
         {
             if (currencyCode == null)
             {
-                throw new System.ArgumentNullException("currencyCode");
+                throw new ArgumentNullException("currencyCode");
             }
 
             var searchCode = currencyCode.ToUpper();
