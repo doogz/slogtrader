@@ -1,0 +1,95 @@
+﻿using System;
+using System.ComponentModel;
+using System.Reflection;
+
+namespace NumbersGameSolver
+{
+    /// <summary>
+    /// Encapsulates an immutable operation combining two numbers with an operator, and used to track the history of a game.
+    
+    /// Note: it's small (12bytes), immutable, not intended to participate in class hierarchies, and therefore a candidate struct.
+    /// After some performance testing, the current choice of struct was strongly justified:
+    /// Time to solve the Identity set {1,1,1,1,1,1} with no Operation history is about 3s
+    /// Time to solve it with an Operation history using struct implementation is about 4s
+    /// Time to solve it with an Operation history using class implementation is about 8s - about 5 times slower!!
+    /// </summary>
+
+    struct Operation : IOperation
+    {
+        public int FirstOperand { get; private set; }
+        public int SecondOperand { get; private set; }
+        public Operator Operator { get; private set; }
+        public int Result
+        {
+            get
+            {
+                int? res = Apply(FirstOperand, SecondOperand, Operator);
+                if (res == null)
+                {
+                    throw new InvalidOperationException("The result of this operation is not defined.");
+                }
+                return res.Value;
+            } 
+        }
+
+        // TODO: Understand why, when this object is a struct, we need to explicitly call the default ctor - but NOT if it's a class
+        public Operation(int i, int j, Operator op) : this() //*** Needed IFF struct impl
+        {
+            // First operand must be >= second in all cases; operators - and / demand it so (within the rules of the game)
+            bool firstBigger = i > j;
+            FirstOperand = firstBigger ? i : j;
+            SecondOperand = firstBigger ? j : i;
+            Operator = op;
+        }
+
+        /// <summary>
+        /// Static method for retrieving the description (attribute) of an enumeration value - where one exists.
+        /// It could happily be refactored as a general extension method for Enums somewhere. It's pretty handy.
+        /// </summary>
+        /// <param name="operatorEnum"></param>
+        /// <returns></returns>
+
+        static public string OperatorDescription(Enum operatorEnum)
+        {
+            FieldInfo fi = operatorEnum.GetType().GetField(operatorEnum.ToString());
+            DescriptionAttribute[] attributes = (DescriptionAttribute[])fi.GetCustomAttributes(typeof(DescriptionAttribute), false);
+            if (attributes.Length > 0)
+            {
+                return attributes[0].Description;
+            }
+            return operatorEnum.ToString();
+        }
+        public string DisplayString
+        {
+            get { return String.Format("{0} {1} {2} = {3}", FirstOperand, OperatorDescription(Operator), SecondOperand, Result); }
+        }
+
+        public static int? Apply(int n1, int n2, Operator op)
+        {
+            switch (op)
+            {
+                case Operator.Addition:
+                    return n1 + n2;
+
+                case Operator.Subtraction:
+                    return (n1 >= n2 ? n1 - n2 : n2 - n1);
+
+                case Operator.Multiplication:
+                    return n1 * n2;
+
+                case Operator.Division:
+                    int numerator = Math.Max(n1, n2);
+                    int denominator = Math.Min(n1, n2);
+                    if (denominator == 0 || (numerator % denominator) != 0)
+                    {
+                        return null;
+                    }
+                    return numerator / denominator;
+
+                default:
+                    return null;
+            }
+
+        }
+    }
+}

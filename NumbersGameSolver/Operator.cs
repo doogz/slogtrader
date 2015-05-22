@@ -1,19 +1,22 @@
 ﻿using System.ComponentModel;
 
-namespace CountdownNumbersGameSolver
+namespace NumbersGameSolver
 {
     /// <summary>
     /// Operation enumerates the (4) different kinds of mathematical operation that can be used in our game.
+    /// As far as the official Countdown rules go, these are never going to change.
     /// </summary>
-    public enum Operation
+    public enum Operator
     {
-        [Description(" + ")]
+        [Description("+")]
         Addition=0,
-        [Description(" - ")]
+        [Description("-")]
         Subtraction,
-        [Description(" X ")]
+        [Description("x")]
         Multiplication,
-        [Description(" \x00F7 ")]
+        [Description("\x00F7")] //
         Division
     }
+
+
 }
