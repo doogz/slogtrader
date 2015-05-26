@@ -7,7 +7,7 @@
     <ProjectGuid>{BC4D0096-7745-4702-8C92-3303BB61AEDC}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>NumbersGameSolver</RootNamespace>
+    <RootNamespace>NumbersGameSdk</RootNamespace>
     <AssemblyName>NumbersGameSolver</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -46,7 +46,6 @@
     <Compile Include="Operation.cs" />
     <Compile Include="Solution.cs" />
     <Compile Include="Operator.cs" />
-    <Compile Include="SimpleBruteForceSolver.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel;
 
-namespace NumbersGameSolver
+namespace NumbersGameSdk
 {
     /// <summary>
     /// Operation enumerates the (4) different kinds of mathematical operation that can be used in our game.

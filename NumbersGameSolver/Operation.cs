@@ -2,7 +2,7 @@
 using System.ComponentModel;
 using System.Reflection;
 
-namespace NumbersGameSolver
+namespace NumbersGameSdk
 {
     /// <summary>
     /// Encapsulates an immutable operation combining two numbers with an operator, and used to track the history of a game.
@@ -32,7 +32,6 @@ namespace NumbersGameSolver
             } 
         }
 
-        // TODO: Understand why, when this object is a struct, we need to explicitly call the default ctor - but NOT if it's a class
         public Operation(int i, int j, Operator op) : this() //*** Needed IFF struct impl
         {
             // First operand must be >= second in all cases; operators - and / demand it so (within the rules of the game)

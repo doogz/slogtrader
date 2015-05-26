@@ -2,12 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace NumbersGameSolver
+namespace NumbersGameSdk
 {
     /// <summary>
     /// NumbersGame represents one particular state of a game, including its historic context (i.e. "the working out")
     /// </summary>
-    class NumbersGame
+    public class NumbersGame
     {
         private readonly List<int> _numbers = new List<int>();
         private readonly List<IOperation> _history = new List<IOperation>();
@@ -17,36 +17,40 @@ namespace NumbersGameSolver
         private static readonly Operator[] OperationValues = (Operator[])Enum.GetValues(typeof (Operator));
         
 
-        // Construct from any enumerable collection of ints
-        public NumbersGame(IEnumerable<int> initVals)
+        // Construct from any enumerable collection of ints, with optional target
+        public NumbersGame(IEnumerable<int> initVals, int target=0)
         {
             foreach (var v in initVals)
             {
                 _numbers.Add(v);
             }
+            Target = target;
         }
         // Copy constructor (deep)
         public NumbersGame(NumbersGame game)
         {
             _numbers.AddRange(game._numbers);
-            _history.AddRange(game._history); 
+            _history.AddRange(game._history);
+            Target = game.Target;
         }
 
         public IEnumerable<IOperation> History { get { return _history; } }
 
-        public int Length
+        public int NumberCount
         {
             get { return _numbers.Count; }
         }
         public bool HasDerivatives
         {
-            get { return Length > 1; }
+            get { return NumberCount > 1; }
         }
 
-        public bool Contains(int value)
+        public bool IsSolved
         {
-            return _numbers.Contains<int>(value);
+            get { return _numbers.Contains<int>(Target); }
         }
+
+        public int Target { get; set; }
 
         public IEnumerable<NumbersGame> GenerateIntermediates()
         {
@@ -78,20 +82,55 @@ namespace NumbersGameSolver
             return ret;
         }
 
-        public NumbersGame Apply(int i1, int i2, Operator op)
+        public bool TryOperation(int idx1, int idx2, Operator op, out int lhs, out int rhs)
         {
-            int maxIndex = Length - 1;
-            if (i1 <0 || i1 >= maxIndex-1 )
-                throw new ArgumentOutOfRangeException("i1", i1, "First index value must be >= 0, and < max_index");
-            if( i2<=i1 || i2 > maxIndex)
-                throw new ArgumentOutOfRangeException("i2", i2, "Second index value must be > first, and <= max_index");
+            int result = 0;
+            lhs = _numbers[idx1];
+            rhs = _numbers[idx2];
+            int n1 = Math.Max(lhs, rhs);
+            int n2 = Math.Min(lhs, rhs);
+            switch (op)
+            {
+                case Operator.Addition:
+                    result = n1 + n2;
+                    break;
 
-            var wl = new NumbersGame(this);
-            
+                case Operator.Subtraction:
+                    if (lhs == rhs) return false;
+                    result = n1 - n2;
+                    break;
 
-            return wl;
+                case Operator.Multiplication:
+                    if (n2 == 1) return false;
+                    result = n1*n2;
+                    break;
+
+                case Operator.Division:
+                    if (n2 == 1) return false;
+                    if (lhs%rhs != 0) return false;
+                    result = n1/n2;
+                    break;
+
+                default:
+                    return false;
+            }
+            _numbers[idx1] = result;
+            _numbers.RemoveAt(idx2);
+            AddHistory(lhs, rhs, op);
+            return true;
         }
-      
+
+        public void UndoOperation(int idx1, int idx2, int lhs, int rhs)
+        {
+            _history.RemoveAt(_history.Count - 1); // Remove last element of history
+            _numbers[idx1] = lhs;                   
+            _numbers.Insert(idx2, rhs);
+        }
+
+        private void AddHistory(int lhs, int rhs, Operator op)
+        {
+            _history.Add(new Operation(lhs, rhs, op));
+        }
     }
 }
 

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Text;
 
-namespace NumbersGameSolver
+namespace NumbersGameSdk
 {
     /// <summary>
     /// Library implementation of ISolution based on an ordered, indexed list of operations.

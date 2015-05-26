@@ -1,4 +1,4 @@
-﻿namespace NumbersGameSolver
+﻿namespace NumbersGameSdk
 {
     /// <summary>
     /// IGameSolver defines a protocol for interacting with a Countdown Numbers Game-solving algorithm.

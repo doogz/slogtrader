@@ -13,9 +13,15 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FinancialTradingService", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NumbersGameTests", "NumbersGameTests\NumbersGameTests.csproj", "{85EF4237-8514-40AD-BA28-C3F3C8756D05}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NumbersGameSolver", "NumbersGameSolver\NumbersGameSolver.csproj", "{BC4D0096-7745-4702-8C92-3303BB61AEDC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NumbersGameSdk", "NumbersGameSolver\NumbersGameSdk.csproj", "{BC4D0096-7745-4702-8C92-3303BB61AEDC}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NumbersGameConsole", "NumbersGameConsole\NumbersGameConsole.csproj", "{DA8BD95B-3052-4B1C-BB9A-0C47E08B619B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProgressiveRecursiveSolver", "ProgressiveRecursiveSolver\ProgressiveRecursiveSolver.csproj", "{9B619B42-5D73-4FA9-AB51-FAA710101599}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DeepRecursiveSolver", "DeepRecursiveSolver\DeepRecursiveSolver.csproj", "{DFC1FA58-7832-4B62-9E5C-C95631135E05}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProgressiveRecursiveSolverTests", "ProgressiveRecursiveSolverTests\ProgressiveRecursiveSolverTests.csproj", "{140F7256-C641-41CB-AAD0-7FCE698CDC4B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -51,6 +57,18 @@ Global
 		{DA8BD95B-3052-4B1C-BB9A-0C47E08B619B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DA8BD95B-3052-4B1C-BB9A-0C47E08B619B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DA8BD95B-3052-4B1C-BB9A-0C47E08B619B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9B619B42-5D73-4FA9-AB51-FAA710101599}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9B619B42-5D73-4FA9-AB51-FAA710101599}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9B619B42-5D73-4FA9-AB51-FAA710101599}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9B619B42-5D73-4FA9-AB51-FAA710101599}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DFC1FA58-7832-4B62-9E5C-C95631135E05}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DFC1FA58-7832-4B62-9E5C-C95631135E05}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DFC1FA58-7832-4B62-9E5C-C95631135E05}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DFC1FA58-7832-4B62-9E5C-C95631135E05}.Release|Any CPU.Build.0 = Release|Any CPU
+		{140F7256-C641-41CB-AAD0-7FCE698CDC4B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{140F7256-C641-41CB-AAD0-7FCE698CDC4B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{140F7256-C641-41CB-AAD0-7FCE698CDC4B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{140F7256-C641-41CB-AAD0-7FCE698CDC4B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
