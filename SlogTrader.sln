@@ -23,6 +23,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DeepRecursiveSolver", "Deep
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProgressiveRecursiveSolverTests", "ProgressiveRecursiveSolverTests\ProgressiveRecursiveSolverTests.csproj", "{140F7256-C641-41CB-AAD0-7FCE698CDC4B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MvvmLightNumbersGame", "MvvmLightNumbersGame\MvvmLightNumbersGame.csproj", "{1FD164D6-7BA7-4AA3-B90C-27F32A61F186}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DeepRecursiveSolverTests", "DeepRecursiveSolverTests\DeepRecursiveSolverTests.csproj", "{C58357C0-759D-40A5-A68A-CA898FFE7D15}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -69,6 +73,14 @@ Global
 		{140F7256-C641-41CB-AAD0-7FCE698CDC4B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{140F7256-C641-41CB-AAD0-7FCE698CDC4B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{140F7256-C641-41CB-AAD0-7FCE698CDC4B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1FD164D6-7BA7-4AA3-B90C-27F32A61F186}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1FD164D6-7BA7-4AA3-B90C-27F32A61F186}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1FD164D6-7BA7-4AA3-B90C-27F32A61F186}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1FD164D6-7BA7-4AA3-B90C-27F32A61F186}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C58357C0-759D-40A5-A68A-CA898FFE7D15}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C58357C0-759D-40A5-A68A-CA898FFE7D15}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C58357C0-759D-40A5-A68A-CA898FFE7D15}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C58357C0-759D-40A5-A68A-CA898FFE7D15}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

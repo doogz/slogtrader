@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{140F7256-C641-41CB-AAD0-7FCE698CDC4B}</ProjectGuid>
+    <ProjectGuid>{C58357C0-759D-40A5-A68A-CA898FFE7D15}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ProgressiveRecursiveSolverTests</RootNamespace>
-    <AssemblyName>ProgressiveRecursiveSolverTests</AssemblyName>
+    <RootNamespace>DeepRecursiveSolverTests</RootNamespace>
+    <AssemblyName>DeepRecursiveSolverTests</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -40,17 +40,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="PRSolverTests.cs" />
+    <Compile Include="DRSolverTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\DeepRecursiveSolver\DeepRecursiveSolver.csproj">
+      <Project>{dfc1fa58-7832-4b62-9e5c-c95631135e05}</Project>
+      <Name>DeepRecursiveSolver</Name>
+    </ProjectReference>
     <ProjectReference Include="..\NumbersGameSolver\NumbersGameSdk.csproj">
       <Project>{bc4d0096-7745-4702-8c92-3303bb61aedc}</Project>
       <Name>NumbersGameSdk</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\ProgressiveRecursiveSolver\ProgressiveRecursiveSolver.csproj">
-      <Project>{9b619b42-5d73-4fa9-ab51-faa710101599}</Project>
-      <Name>ProgressiveRecursiveSolver</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
