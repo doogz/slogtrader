@@ -21,15 +21,10 @@ namespace ProgressiveRecursiveSolver
 
         public bool GetFirstSolution(int[] inputNumbers, int target, out ISolution solution)
         {
-            var initialNumbers = new NumbersGame(inputNumbers) {Target = target};
-            return GetFirstSolution(initialNumbers, out solution);
-        }
-
-        public bool GetFirstSolution(NumbersGame initialGame, out ISolution solution)
-        {
+            solution = null;
             var t0 = DateTime.Now;
-
-            _wip.Add(initialGame);
+            var initialNumbers = new NumbersGame(inputNumbers) {Target = target};
+            _wip.Add(initialNumbers);
 
             while (_wip.Any())
             {
@@ -58,15 +53,12 @@ namespace ProgressiveRecursiveSolver
                 // We have dealt with (0,lists] now. RemoveRange does exactly what we need.
                 _wip.RemoveRange(0, lists );
             }
-            // There aint one
-            solution = null;
             var t1 = System.DateTime.Now;
             var dt = t1 - t0;
             Console.WriteLine("Exhausting the possibilities took {0} s {1} ms", dt.Seconds, dt.Milliseconds);
             return false;
     
         }
-
 
         public bool GetShortestSolution(int[] inputNumbers, int target, out ISolution solution)
         {

@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.31101.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PriceUpdateConsole", "PriceUpdateConsole\PriceUpdateConsole.csproj", "{C6AC91E8-CBCD-4A3A-A49C-7BFBC8DAE717}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FinancialTradingService", "FinancialTradingService\FinancialTradingService.csproj", "{067A2EF0-5B47-479F-A894-403ED254D6BE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C6AC91E8-CBCD-4A3A-A49C-7BFBC8DAE717}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C6AC91E8-CBCD-4A3A-A49C-7BFBC8DAE717}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C6AC91E8-CBCD-4A3A-A49C-7BFBC8DAE717}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C6AC91E8-CBCD-4A3A-A49C-7BFBC8DAE717}.Release|Any CPU.Build.0 = Release|Any CPU
+		{067A2EF0-5B47-479F-A894-403ED254D6BE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{067A2EF0-5B47-479F-A894-403ED254D6BE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{067A2EF0-5B47-479F-A894-403ED254D6BE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{067A2EF0-5B47-479F-A894-403ED254D6BE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

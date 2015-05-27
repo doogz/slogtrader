@@ -49,8 +49,8 @@ namespace NumbersGameSdk
             return sb.ToString();
         }
         /// <summary>
-        /// Public utility method for individually adding operations. 
-        /// Intended for solutions with a custom data structure (not necessarily an enumerable list of operations)
+        /// Public Utility method for individually adding operations. 
+        /// Intended for solutions with a custom data structure - a node based one is going to be way faster, and is intended for delivery in a later phase
         /// </summary>
         /// <param name="operation"></param>
         /// <returns></returns>
