@@ -12,7 +12,7 @@ namespace NumbersGameSdk
         private readonly List<int> _numbers = new List<int>();
         private readonly List<IOperation> _history = new List<IOperation>();
         
-        // Design decision: Cache the Operation enum values once, rather than repeatedly needing to use typeof and GetValues
+        // Cache the Operation enum values once, rather than repeatedly needing to use typeof and GetValues
         // during our time-critical number crunching.
         private static readonly Operator[] OperationValues = (Operator[])Enum.GetValues(typeof (Operator));
         
@@ -87,6 +87,7 @@ namespace NumbersGameSdk
             int result = 0;
             lhs = _numbers[idx1];
             rhs = _numbers[idx2];
+            if (lhs == 0 || rhs == 0) return false;
             int n1 = Math.Max(lhs, rhs);
             int n2 = Math.Min(lhs, rhs);
             switch (op)
