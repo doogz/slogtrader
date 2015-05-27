@@ -71,7 +71,6 @@ namespace NumbersGameSdk
                             var game = new NumbersGame(this); // Deep copy
                             game._numbers.RemoveAt(ix2);// Remove the latter ix2 element
                             game._numbers[ix1] = v.Value; // Overwrite the earlier ix1 element with the result
-                            // WOW. If we maintain the history using class implementation, we quadruple the processing time(!)
                             game._history.Add(new Operation(i1, i2, op));
 
                             ret.Add(game);
@@ -108,7 +107,7 @@ namespace NumbersGameSdk
 
                 case Operator.Division:
                     if (n2 == 1) return false;
-                    if (lhs%rhs != 0) return false;
+                    if (n1%n2 != 0) return false;
                     result = n1/n2;
                     break;
 

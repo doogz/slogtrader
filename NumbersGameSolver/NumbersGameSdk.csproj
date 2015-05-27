@@ -8,7 +8,7 @@
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>NumbersGameSdk</RootNamespace>
-    <AssemblyName>NumbersGameSolver</AssemblyName>
+    <AssemblyName>NumbersGameSdk</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -43,10 +43,12 @@
     <Compile Include="IOperation.cs" />
     <Compile Include="ISolution.cs" />
     <Compile Include="NumbersGame.cs" />
+    <Compile Include="NumberTileGrid.cs" />
     <Compile Include="Operation.cs" />
     <Compile Include="Solution.cs" />
     <Compile Include="Operator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SolverLocator.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

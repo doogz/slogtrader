@@ -7,8 +7,8 @@ namespace NumbersGameSdk
 {
     /// <summary>
     /// Library implementation of ISolution based on an ordered, indexed list of operations.
-    /// New 'solution' implementors are to provide IGameSolver types, and can reuse this class for returning their results.
-    /// Clients further down the chain seeing only ISolution don't get to modify properties, but do get read access via the interface
+    /// Algorithm (IGameSolver) implementors should use this class for returning their results.
+    /// SDK clients, further down the chain and seeing only ISolution, don't get to modify properties, but do get read access via the interface.
     /// </summary>
 
     public class Solution : ISolution
@@ -39,9 +39,10 @@ namespace NumbersGameSdk
         /// </summary>
         public string GetMultilineDisplayString()
         {
-            
-            // There are only a few steps (five or less), so this multiple concatenation isn't too bad itself, especially with a string builder.
-            // Note how both solution and operation have this as a method now, rather than a property. 
+            // There are only a few steps (five or less in the official game with 6 numbers), 
+            // so this multiple concatenation isn't too bad in itself, especially with a string builder.
+            // But, IOperation.DisplayString (which it calls) is already a property that does a bit of work (string concatenation).
+            // This being the case, this is defined as a Method rather than a Property.
             var sb=new StringBuilder();
             foreach (var op in _operations)
                 sb.AppendLine(op.DisplayString);
