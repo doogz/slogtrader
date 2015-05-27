@@ -16,6 +16,7 @@ namespace DeepRecursiveSolver
         static DeepRecursiveUndoingSolver()
         {
             // Where to get our IoC container??
+            /*
             var container = new UnityContainer();
 
             // Registering...
@@ -23,11 +24,17 @@ namespace DeepRecursiveSolver
 
             // Resolving...
             var solution = container.Resolve<Solution>();
+             * */
         }
 
         public bool GetFirstSolution(int[] inputNumbers, int target, out ISolution solution)
         {
-            var game = new NumbersGame(inputNumbers) {Target = target};
+            var initialNumbers = new NumbersGame(inputNumbers) { Target = target };
+            return GetFirstSolution(initialNumbers, out solution);
+        }
+
+        public bool GetFirstSolution(NumbersGame game, out ISolution solution)
+        {
             solution = null;
             var t0 = DateTime.Now;
             bool solved = Solve(game);

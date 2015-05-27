@@ -16,11 +16,11 @@ namespace NumbersGameConsole
             {
                 Console.WriteLine( "Please enter the six starting numbers.\n" +
                     "Only the values 1 through 10, 25, 50, 75 and 100 are valid. Enter 'Q' to quit.");
-                int[] numbers;
-                if (!GetNumbersFromConsole(out numbers))
-                    return;
-                var rand = new Random();
-                int target = rand.Next(101, 999);
+                int[] numbers = {10, 7, 2};
+                //if (!GetNumbersFromConsole(out numbers))
+                //    return;
+                //var rand = new Random();
+                int target = 24; //rand.Next(101, 999);
                 Console.WriteLine("And the target is ... {0}", target);
                 var solver = new DeepRecursiveUndoingSolver(); //ProgressiveRecursiveBruteForceSolver();
                 ISolution solution;
@@ -32,6 +32,7 @@ namespace NumbersGameConsole
                 {
                     Console.WriteLine("Can't be solved for tgt={0}", target);
                 }
+                Console.ReadLine();
 
             }
         }

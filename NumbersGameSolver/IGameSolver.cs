@@ -21,6 +21,8 @@
         /// <param name="solution">Receives solution</param>
         /// <returns></returns>
         bool GetFirstSolution(int[] inputNumbers, int target, out ISolution solution);
+
+        bool GetFirstSolution(NumbersGame game, out ISolution solution);
         
         /// <summary>
         /// Writes the shortest (in terms of moves) solution discovered into 'solution' out-parameter. Returns false if no solution to be found.
