@@ -1,9 +1,9 @@
-﻿using System.Collections;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Text;
 
-namespace NumbersGameSdk
+namespace ScottLogic.NumbersGame
 {
     /// <summary>
     /// Library implementation of ISolution based on an ordered, indexed list of operations.
@@ -28,9 +28,10 @@ namespace NumbersGameSdk
 
         private readonly List<IOperation> _operations = new List<IOperation>();
 
-        public Solution(IEnumerable<IOperation> operations)
+        public Solution(IEnumerable<IOperation> operations, TimeSpan duration)
         {
             _operations.AddRange(operations);
+            ExecutionTime = duration;
         }
         /// <summary>
         /// Implements ISolution.GetMultilineDisplayString
@@ -82,7 +83,7 @@ namespace NumbersGameSdk
         /// The value presented is the real-world time for generating an answer, not the speed for a single core.
         /// The property is settable from clients of Solution, but only gettable from the interface
         /// </summary>
-        public double ExecutionTime { get; set; }
+        public TimeSpan ExecutionTime { get; set; }
 
         /// <summary>
         /// Public multithreaded flag as property. Set accessor from within Solution, but not ISolution.

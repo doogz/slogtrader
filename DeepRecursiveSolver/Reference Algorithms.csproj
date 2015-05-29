@@ -7,8 +7,8 @@
     <ProjectGuid>{DFC1FA58-7832-4B62-9E5C-C95631135E05}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>DeepRecursiveSolver</RootNamespace>
-    <AssemblyName>DeepRecursiveSolver</AssemblyName>
+    <RootNamespace>ScottLogic.NumbersGame.ReferenceAlgorithms</RootNamespace>
+    <AssemblyName>NumbersGameReferenceAlgorithms</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -49,12 +49,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DeepRecursiveUndoingSolver.cs" />
+    <Compile Include="ProgressiveRecursiveBruteForceSolver.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\NumbersGameSolver\NumbersGameSdk.csproj">
+    <ProjectReference Include="..\NumbersGameSolver\Numbers Game SDK.csproj">
       <Project>{bc4d0096-7745-4702-8c92-3303bb61aedc}</Project>
-      <Name>NumbersGameSdk</Name>
+      <Name>Numbers Game SDK</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

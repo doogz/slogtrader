@@ -1,4 +1,4 @@
-﻿namespace NumbersGameSdk
+﻿namespace ScottLogic.NumbersGame
 {
     /// <summary>
     /// IGameSolver defines a protocol for interacting with a Countdown Numbers Game-solving algorithm.
@@ -12,17 +12,16 @@
     /// </summary>
     public interface IGameSolver
     {
-        // void Initialise(int[] inputNumbers, int target);
         /// <summary>
-        /// Provides the first solution discovered into the solution out-parameter. Returns false if no solution to be found (true otherwise).
+        /// Provides a solution to the caller via the out-parameter. Returns false if no solution to be found, true otherwise.
         /// </summary>
         /// <param name="inputNumbers">An unsorted array of numbers representing the starting numbers</param>
         /// <param name="target">The target of this numbers game</param>
         /// <param name="solution">Receives solution</param>
-        /// <returns></returns>
-        bool GetFirstSolution(int[] inputNumbers, int target, out ISolution solution);
+        /// <returns>Returns true if a solution was found, false otherwise</returns>
+        bool GetSolution(int[] inputNumbers, int target, out ISolution solution);
 
-        bool GetFirstSolution(NumbersGame game, out ISolution solution);
+        //bool GetFirstSolution(NumbersGame game, out ISolution solution);
         
         /// <summary>
         /// Writes the shortest (in terms of moves) solution discovered into 'solution' out-parameter. Returns false if no solution to be found.
@@ -30,7 +29,7 @@
         /// <param name="inputNumbers"></param>
         /// <param name="target"></param>
         /// <param name="solution"></param>
-        /// <returns></returns>
+        /// <returns>Returns true if a solution was found, false otherwise</returns>
         bool GetShortestSolution(int[] inputNumbers, int target, out ISolution solution);
     }
 }

@@ -1,10 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using ScottLogic.NumbersGame;
 using ScottLogic.NumbersGame.Game;
 
-namespace ProgressiveRecursiveSolver
+namespace ScottLogic.NumbersGame.ReferenceAlgorithms
 {
     /// <summary>
     /// Implements a game solver (IGameSolver) based on a progressively deeper "brute force" approach.
@@ -20,13 +19,13 @@ namespace ProgressiveRecursiveSolver
     {
         private readonly List<INumbersGame> _wip = new List<INumbersGame>(60); // work in progress
 
-        public bool GetFirstSolution(int[] inputNumbers, int target, out ISolution solution)
+        public bool GetSolution(int[] inputNumbers, int target, out ISolution solution)
         {
-            var initialNumbers = new NumbersGame(inputNumbers) {Target = target};
-            return GetFirstSolution(initialNumbers, out solution);
+            var initialNumbers = new Game.NumbersGame(inputNumbers) {Target = target};
+            return GetSolution(initialNumbers, out solution);
         }
 
-        public bool GetFirstSolution(NumbersGame initialGame, out ISolution solution)
+        private bool GetSolution(Game.NumbersGame initialGame, out ISolution solution)
         {
             var t0 = DateTime.Now;
 

@@ -55,13 +55,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\DeepRecursiveSolver\DeepRecursiveSolver.csproj">
-      <Project>{DFC1FA58-7832-4B62-9E5C-C95631135E05}</Project>
-      <Name>DeepRecursiveSolver</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\NumbersGameSolver\NumbersGameSdk.csproj">
+    <ProjectReference Include="..\NumbersGameSolver\Numbers Game SDK.csproj">
       <Project>{bc4d0096-7745-4702-8c92-3303bb61aedc}</Project>
-      <Name>NumbersGameSdk</Name>
+      <Name>Numbers Game SDK</Name>
     </ProjectReference>
     <ProjectReference Include="..\ProgressiveRecursiveSolver\ProgressiveRecursiveSolver.csproj">
       <Project>{9b619b42-5d73-4fa9-ab51-faa710101599}</Project>

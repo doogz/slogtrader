@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using NumbersGameSdk;
 using NUnit.Framework;
+using ScottLogic.NumbersGame;
 
-namespace NumbersGameTests
+namespace ScottLogic.NumbersGameTests
 {
     [TestFixture]
     public class SolutionTest
@@ -22,11 +22,8 @@ namespace NumbersGameTests
                 new Operation(72, 8, Operator.Division)
             };
 
-            solution = new Solution(ops);
-            expectedDisplayString = "2 + 1 = 3" + Environment.NewLine +
-                                    "4 - 3 = 1" + Environment.NewLine +
-                                    "6 x 5 = 30" + Environment.NewLine +
-                                    "72 \x00F7 8 = 9" + Environment.NewLine;
+            solution = new Solution(ops, new TimeSpan(hours: 0, minutes: 0, seconds: 1));
+            expectedDisplayString = string.Format("2 + 1 = 3{0}4 - 3 = 1{0}6 x 5 = 30{0}72 \x00F7 8 = 9{0}", Environment.NewLine);
         }
 
         [TearDown]

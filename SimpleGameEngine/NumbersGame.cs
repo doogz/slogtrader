@@ -1,14 +1,64 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using NumbersGameSdk;
 
-namespace NumbersGameSdk
+namespace SimpleGameEngine
 {
     /// <summary>
-    /// NumbersGame represents one particular state of a game, including its historic context (i.e. "the working out")
+    /// Reference library implementation of INumbersGame
     /// </summary>
-    public class NumbersGame
+    internal class NumbersGame : INumbersGame
     {
+        // ---------------------------
+        // INumbersGame implementation
+        // ----------------------------
+        public void Initialise(int[] initialValues, int target)
+        {
+            _initialNumbers = initialValues;
+            Target = target;
+        }
+
+        public bool IsOperationValid(IOperation op)
+        {
+            return Operation.IsValid(op.FirstOperand, op.SecondOperand, op.Operator);
+        }
+
+        public void DoOperation(IOperation op)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void UndoOperation()
+        {
+            throw new NotImplementedException();
+        }
+        public bool IsExhausted
+        {
+            get { return NumberCount < 2; }
+        }
+
+        public int NumberCount
+        {
+            get { return _numbers.Count; }
+        }
+
+        public int[] InitialNumbers
+        {
+            get { throw new NotImplementedException(); }
+        }
+
+        public int[] CurrentNumbers
+        {
+            get { throw new NotImplementedException(); }
+        }
+
+
+        public int Target { get; set; }
+
+        // Private implementation details
+        // ------------------------------
+        private int[] _initialNumbers;
         private readonly List<int> _numbers = new List<int>();
         private readonly List<IOperation> _history = new List<IOperation>();
         
@@ -36,13 +86,17 @@ namespace NumbersGameSdk
 
         public IEnumerable<IOperation> History { get { return _history; } }
 
-        public int NumberCount
+       
+
+        public IGame CreateDescendent(IOperation op)
         {
-            get { return _numbers.Count; }
-        }
-        public bool HasDerivatives
-        {
-            get { return NumberCount > 1; }
+            var game = new NumbersGame(this); // Deep copy - takes initial values, history and current values
+            game._numbers.RemoveAt(ix2);// Remove the latter ix2 element
+            game._numbers[ix1] = v.Value; // Overwrite the earlier ix1 element with the result
+            game._history.Add(new Operation(i1, i2, op));
+
+            ret.Add(game);
+            throw new NotImplementedException();
         }
 
         public bool IsSolved
@@ -50,7 +104,12 @@ namespace NumbersGameSdk
             get { return _numbers.Contains<int>(Target); }
         }
 
-        public int Target { get; set; }
+        public bool IsComplete
+        {
+            get { throw new NotImplementedException(); }
+        }
+
+        
 
         public IEnumerable<NumbersGame> GenerateIntermediates()
         {

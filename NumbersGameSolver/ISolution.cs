@@ -1,21 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 
-namespace NumbersGameSdk
+namespace ScottLogic.NumbersGame
 {
-    /*
-    public enum Platform
-    {
-        Native=0,
-        Windows,
-        Mac,
-        Linux
-    }
-     * */
-
     /// <summary>
-    /// ISolution models the output of a countdown numbers game solver.
+    /// ISolution represents the description of a correctly-solved numbers game.
     /// It supports read-only access to an indexed list of operations, modeled by IOperation,
     /// and provides some additional details of the solution via a few properties.
     /// </summary>
@@ -28,9 +16,9 @@ namespace NumbersGameSdk
 
         int NumberOfOperations{ get; }
         
-        IOperation this[int idx] { get; } // My first indexer. Seriously! This used to be a GetOperation(int). Is it reasonable/best practice to provide both?
+        IOperation this[int idx] { get; }
         
-        double ExecutionTime { get; }
+        TimeSpan ExecutionTime { get; }
         
         bool Multithreaded { get; }
     }

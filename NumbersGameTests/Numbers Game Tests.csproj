@@ -6,7 +6,7 @@
     <ProjectGuid>{85EF4237-8514-40AD-BA28-C3F3C8756D05}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>NumbersGameTests</RootNamespace>
+    <RootNamespace>ScottLogic.NumbersGameTests</RootNamespace>
     <AssemblyName>NumbersGameTests</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -51,15 +51,15 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="OperationTest.cs" />
+    <Compile Include="NumbersGameTestFixture.cs" />
+    <Compile Include="OperationTestFixture.cs" />
     <Compile Include="SolutionTest.cs" />
-    <Compile Include="VisualStudioOperationUnitTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\NumbersGameSolver\NumbersGameSdk.csproj">
+    <ProjectReference Include="..\NumbersGameSolver\Numbers Game SDK.csproj">
       <Project>{bc4d0096-7745-4702-8c92-3303bb61aedc}</Project>
-      <Name>NumbersGameSdk</Name>
+      <Name>Numbers Game SDK</Name>
     </ProjectReference>
   </ItemGroup>
   <Choose>

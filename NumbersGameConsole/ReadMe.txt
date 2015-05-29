@@ -1,6 +1,10 @@
-﻿Company A wishes to offer number crunching services to one of their clients, remotely.
+﻿The NumbersGameSdk defines a number of interfaces for modelling a number-crunching algorithm.
+The
+
+
+Company A wishes to offer number crunching services to one of their clients, remotely.
 In our case, we'll use the numbers game from countdown, practicing some thread-safe, multithreaded coding,
-with unit tests. The client deliverable is an API, NumberGameSolver, for which the product owner said:
+with unit tests. The client deliverable is an API, NumberGameSdk, for which the product owner said:
 
 
 "I want to see the shortest solution within 15 seconds, and the shortest within 15 seconds, if one's possible - or a clear indication that one isn't."
@@ -8,7 +12,7 @@ with unit tests. The client deliverable is an API, NumberGameSolver, for which t
 "I want to see the shortest solution within "
 
 I imagine commisioning this piece of software so that I can deliver some number crunching maths service to a remote client.
-The client deliverable is the NumberGameSolver API.
+The client deliverable is the NumberGameSdk API.
 
 
 requisite functionality is provided in the 

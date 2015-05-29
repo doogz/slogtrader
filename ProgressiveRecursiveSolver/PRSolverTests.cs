@@ -1,9 +1,6 @@
-﻿using NUnit.Framework;
-using NumbersGameSdk;
-using NumbersGameSdk.Game;
-using ProgressiveRecursiveSolver;
+﻿using ScottLogic.NumbersGame;
 
-namespace ProgressiveRecursiveSolverTests
+namespace ProgressiveRecursiveSolver
 {
     [TestFixture]
     public class UnitTest

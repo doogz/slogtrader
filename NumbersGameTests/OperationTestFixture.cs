@@ -1,11 +1,11 @@
 ﻿using System;
-using NumbersGameSdk;
 using NUnit.Framework;
+using ScottLogic.NumbersGame;
 
-namespace NumbersGameTests
+namespace ScottLogic.NumbersGameTests
 {
     [TestFixture]
-    public class OperationTest
+    public class OperationTestFixture
     {
         [Test]
         public void Addition()

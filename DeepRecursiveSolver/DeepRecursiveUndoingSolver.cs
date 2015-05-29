@@ -1,8 +1,7 @@
 ﻿using System;
-using Microsoft.Practices.Unity;
-using NumbersGameSdk;
+using System.Diagnostics;
 
-namespace DeepRecursiveSolver
+namespace ScottLogic.NumbersGame.ReferenceAlgorithms
 {
     /// <summary>
     /// In contrast to the progressive recursive solver, the deep recursive solver uses recursion exhaustively from the off.
@@ -27,47 +26,51 @@ namespace DeepRecursiveSolver
             var solution = container.Resolve<Solution>();
         }
 #endif
-        public bool GetFirstSolution(int[] inputNumbers, int target, out ISolution solution)
+        public bool GetSolution(int[] inputNumbers, int target, out ISolution solution)
         {
-            var initialNumbers = new NumbersGame(inputNumbers) { Target = target };
-            return GetFirstSolution(initialNumbers, out solution);
+            var initialNumbers = new Game.NumbersGame(inputNumbers, target);
+            return GetSolution(initialNumbers, out solution);
         }
 
-        public bool GetFirstSolution(NumbersGame game, out ISolution solution)
+        private bool GetSolution(Game.NumbersGame game, out ISolution solution)
         {
-            solution = null;
-            var t0 = DateTime.Now;
+            var timer = Stopwatch.StartNew();
             bool solved = Solve(game);
-            var t1 = DateTime.Now;
-            var duration = t1 - t0;
-            solution = new Solution(game.History);
+            solution = new Solution(game.History, timer.Elapsed);
             return solved;
         }
 
-        public bool GetShortestSolution(int[] inputNumbers, int target, out ISolution solution)
-        {
-            throw new NotImplementedException();
-        }
 
-        private bool Solve(NumbersGame game)
+        private bool Solve(Game.NumbersGame game)
         {
             if (game.IsSolved) return true;
 
             int numbers = game.NumberCount;
             int maxIdx0 = numbers - 1;
             for (int idx0 = 0; idx0 < maxIdx0; ++idx0)
+            {
+                int n1 = game.GetNumber(idx0);
                 for (int idx1 = idx0 + 1; idx1 < numbers; ++idx1)
+                {
+                    int n2 = game.GetNumber(idx1);
                     foreach (Operator op in Enum.GetValues(typeof (Operator)))
                     {
-                        int lhs, rhs;
-                        if (game.TryOperation(idx0, idx1, op, out lhs, out rhs))
+                        if (Operation.IsValid(n1, n2, op))
                         {
+                            game.DoOperation(new Operation(n1, n2, op));
                             if (game.IsSolved) return true;
                             if (game.NumberCount >= 2 && Solve(game)) return true;
-                            game.UndoOperation(idx0, idx1, lhs, rhs);
+                            game.UndoOperation();
                         }
                     }
+
+                }
+            }
             return false;
+        }
+        public bool GetShortestSolution(int[] inputNumbers, int target, out ISolution solution)
+        {
+            throw new NotImplementedException();
         }
         
     }

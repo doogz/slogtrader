@@ -1,15 +1,15 @@
-﻿namespace NumbersGameSdk
+﻿namespace ScottLogic.NumbersGame
 {
     /// <summary>
-    /// IOperation represents a single combination of two numbers with an appropriate operator in the countdown numbers game.
-    /// At a bare minimum, we want to show the working out for intermediate values.
-    /// As a possible extension, we could identify the whereabouts of the values we're using i.e. "Take the 1 at the beginning of the set of numbers, and the 3 at the third position..."
+    /// IOperation represents the combination of two numbers with an appropriate operator to yield a result.
+    /// Each operation therefore consumes two numbers and generates one new one.
     /// </summary>
     public interface IOperation
     {
         int FirstOperand { get; }
         Operator Operator { get; }
         int SecondOperand { get; }
+        int Result { get; }
         string DisplayString { get; }
     }
 }

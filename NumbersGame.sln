@@ -1,0 +1,64 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.31101.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Numbers Game Tests", "NumbersGameTests\Numbers Game Tests.csproj", "{85EF4237-8514-40AD-BA28-C3F3C8756D05}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Numbers Game SDK", "NumbersGameSolver\Numbers Game SDK.csproj", "{BC4D0096-7745-4702-8C92-3303BB61AEDC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NumbersGameConsole", "NumbersGameConsole\NumbersGameConsole.csproj", "{DA8BD95B-3052-4B1C-BB9A-0C47E08B619B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProgressiveRecursiveSolver", "ProgressiveRecursiveSolver\ProgressiveRecursiveSolver.csproj", "{9B619B42-5D73-4FA9-AB51-FAA710101599}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Reference Algorithms", "DeepRecursiveSolver\Reference Algorithms.csproj", "{DFC1FA58-7832-4B62-9E5C-C95631135E05}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Reference Algorithm Tests", "DeepRecursiveSolverTests\Reference Algorithm Tests.csproj", "{C58357C0-759D-40A5-A68A-CA898FFE7D15}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Competition", "Competition\Competition.csproj", "{3E9313E8-FCE6-4089-91D1-9F28E4B1D87A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Competition Tests", "CompetitionTests\Competition Tests.csproj", "{08EE25F3-9C96-48C1-BE2D-5686186CF87C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{85EF4237-8514-40AD-BA28-C3F3C8756D05}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{85EF4237-8514-40AD-BA28-C3F3C8756D05}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{85EF4237-8514-40AD-BA28-C3F3C8756D05}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{85EF4237-8514-40AD-BA28-C3F3C8756D05}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BC4D0096-7745-4702-8C92-3303BB61AEDC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BC4D0096-7745-4702-8C92-3303BB61AEDC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BC4D0096-7745-4702-8C92-3303BB61AEDC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BC4D0096-7745-4702-8C92-3303BB61AEDC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DA8BD95B-3052-4B1C-BB9A-0C47E08B619B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DA8BD95B-3052-4B1C-BB9A-0C47E08B619B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DA8BD95B-3052-4B1C-BB9A-0C47E08B619B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DA8BD95B-3052-4B1C-BB9A-0C47E08B619B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9B619B42-5D73-4FA9-AB51-FAA710101599}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9B619B42-5D73-4FA9-AB51-FAA710101599}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9B619B42-5D73-4FA9-AB51-FAA710101599}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9B619B42-5D73-4FA9-AB51-FAA710101599}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DFC1FA58-7832-4B62-9E5C-C95631135E05}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DFC1FA58-7832-4B62-9E5C-C95631135E05}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DFC1FA58-7832-4B62-9E5C-C95631135E05}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DFC1FA58-7832-4B62-9E5C-C95631135E05}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C58357C0-759D-40A5-A68A-CA898FFE7D15}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C58357C0-759D-40A5-A68A-CA898FFE7D15}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C58357C0-759D-40A5-A68A-CA898FFE7D15}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C58357C0-759D-40A5-A68A-CA898FFE7D15}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3E9313E8-FCE6-4089-91D1-9F28E4B1D87A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3E9313E8-FCE6-4089-91D1-9F28E4B1D87A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3E9313E8-FCE6-4089-91D1-9F28E4B1D87A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3E9313E8-FCE6-4089-91D1-9F28E4B1D87A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{08EE25F3-9C96-48C1-BE2D-5686186CF87C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{08EE25F3-9C96-48C1-BE2D-5686186CF87C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{08EE25F3-9C96-48C1-BE2D-5686186CF87C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{08EE25F3-9C96-48C1-BE2D-5686186CF87C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
