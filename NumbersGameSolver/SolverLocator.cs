@@ -1,6 +1,8 @@
 ﻿using System;
+using System.ComponentModel;
 using System.IO;
 using System.Reflection;
+using System.Text.RegularExpressions;
 
 namespace ScottLogic.NumbersGame
 {
@@ -9,9 +11,6 @@ namespace ScottLogic.NumbersGame
     /// Specifically, it uses reflection to find types that implement IGameSolver.
     /// </summary>
     /// 
-    /// <remarks>
-    /// THIS IS JUST A PLACEHOLDER - WORK IN PROGRESS
-    /// </remarks>
     public class SolverLocator
     {
         public string SdkFolderUri
@@ -39,6 +38,30 @@ namespace ScottLogic.NumbersGame
             get { return new Uri(ExeFolderUri).LocalPath; }
         }
 
+        /// <summary>
+        /// Uses reflection to look for a custome Description attribute.
+        /// If one doesn't exist, the class name is exploded out from Upper-camel case to words
+        /// </summary>
+        /// <returns></returns>
+        public string GetTypeDescription(Type t)
+        {
+            var descriptions = t.GetCustomAttributes(typeof (DescriptionAttribute), false);
+            if (descriptions.Length == 0)
+                return CamelCaseToWords(t.Name);
+
+            return ((DescriptionAttribute)descriptions[0]).Description;
+        }
+
+        private string CamelCaseToWords(string input)
+        {
+            string output = Regex.Replace(
+                input,
+                "([A-Z])",
+                " $1",
+                RegexOptions.Compiled).Trim();
+            return output;
+        }
+
         public void FindSolvers()
         {
             var di = new DirectoryInfo(ExeFolder);
@@ -50,15 +73,19 @@ namespace ScottLogic.NumbersGame
                 try
                 {
                     Assembly asm = Assembly.LoadFile(f.FullName);
-                    Console.WriteLine("Loaded {0}", f.Name);
+                    //Console.WriteLine("Loaded {0}", f.Name);
                     var types = asm.GetExportedTypes();
                     foreach (var t in types)
                         if (t.IsClass && !t.IsAbstract)
                         {
+
                             var interfaces = t.GetInterfaces();
                             foreach (var i in interfaces)
                                 if (i == typeof (IGameSolver))
-                                    Console.WriteLine("{0} SUPPORTS IGameSolver", t.Name);
+                                {
+                                    //Console.WriteLine("{0} SUPPORTS IGameSolver", t.Name);
+                                    SolverFactory.Register(t, GetTypeDescription(t));
+                                }
                         }
                 }
                 catch (Exception)

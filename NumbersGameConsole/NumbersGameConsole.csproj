@@ -7,7 +7,7 @@
     <ProjectGuid>{DA8BD95B-3052-4B1C-BB9A-0C47E08B619B}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>NumbersGameConsole</RootNamespace>
+    <RootNamespace>ScottLogic.NumbersGame.Console</RootNamespace>
     <AssemblyName>NumbersGameConsole</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -55,13 +55,13 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\DeepRecursiveSolver\Reference Algorithms.csproj">
+      <Project>{dfc1fa58-7832-4b62-9e5c-c95631135e05}</Project>
+      <Name>Reference Algorithms</Name>
+    </ProjectReference>
     <ProjectReference Include="..\NumbersGameSolver\Numbers Game SDK.csproj">
       <Project>{bc4d0096-7745-4702-8c92-3303bb61aedc}</Project>
       <Name>Numbers Game SDK</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\ProgressiveRecursiveSolver\ProgressiveRecursiveSolver.csproj">
-      <Project>{9b619b42-5d73-4fa9-ab51-faa710101599}</Project>
-      <Name>ProgressiveRecursiveSolver</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

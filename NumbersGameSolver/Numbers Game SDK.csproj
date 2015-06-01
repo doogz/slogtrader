@@ -39,12 +39,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Bags\CountdownBigNumberBag.cs" />
+    <Compile Include="Bags\CountdownNumberBags.cs" />
+    <Compile Include="Bags\CountdownSmallNumberBag.cs" />
+    <Compile Include="Bags\INumberBag.cs" />
+    <Compile Include="GameGenerator.cs" />
     <Compile Include="Game\INumbersGame.cs" />
     <Compile Include="Game\NumbersGame.cs" />
     <Compile Include="Game\OperationDetail.cs" />
     <Compile Include="IGameSolver.cs" />
     <Compile Include="IOperation.cs" />
     <Compile Include="ISolution.cs" />
+    <Compile Include="Bags\NumberBag.cs" />
     <Compile Include="Operation.cs" />
     <Compile Include="Solution.cs" />
     <Compile Include="Operator.cs" />

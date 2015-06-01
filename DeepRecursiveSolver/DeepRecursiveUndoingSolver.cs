@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel;
 using System.Diagnostics;
 
 namespace ScottLogic.NumbersGame.ReferenceAlgorithms
@@ -7,10 +8,10 @@ namespace ScottLogic.NumbersGame.ReferenceAlgorithms
     /// In contrast to the progressive recursive solver, the deep recursive solver uses recursion exhaustively from the off.
     /// Whereas the former attempts to find solutions using 1 operation, 2 operations, 3 operations etc - progressively - this
     /// solver resurses to the lowest depths before bubbling back out (and in).
-    /// Due to the unprogressive nature of the seatch, it's entirely possible that we come up with a "solution" that contains
+    /// Due to the unprogressive nature of the search, it's entirely possible that we come up with a "solution" that contains
     /// unnecessary operations.
     /// </summary>
-    public class DeepRecursiveUndoingSolver : IGameSolver
+    [Description("Brute-force deep recursive undoing solver")]public class DeepRecursiveUndoingSolver : IGameSolver
     {
 #if UsingUnityYet
         static DeepRecursiveUndoingSolver()

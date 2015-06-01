@@ -1,13 +1,9 @@
-﻿using System.Runtime.InteropServices;
-using NUnit.Framework;
-using ScottLogic.NumbersGame;
-using ScottLogic.NumbersGame.Game;
-using ScottLogic.NumbersGame.ReferenceAlgorithms;
+﻿using NUnit.Framework;
 
-namespace DeepRecursiveSolverTests
+namespace ScottLogic.NumbersGame.ReferenceAlgorithms.Tests
 {
     [TestFixture]
-    public class UnitTest
+    public class ProgressiveRecursiveSolverTestFixture
     {
 
         [SetUp]
@@ -16,12 +12,12 @@ namespace DeepRecursiveSolverTests
         }
 
         [Test]
-        public void SolveSimpleAddition()
+        public void SimpleAddition()
         {
             var input = new [] {1, 2};
             var target = 3; 
             ISolution solution;
-            var solver = new ProgressiveRecursiveBruteForceSolver();
+            var solver = new ProgressiveRecursiveSolver();
             bool solved = solver.GetSolution(input, target, out solution);
             Assert.AreEqual(true, solved);
             Assert.AreEqual(1, solution.NumberOfOperations);
@@ -29,12 +25,12 @@ namespace DeepRecursiveSolverTests
         }
 
         [Test]
-        public void SolveMultiplicationAndAddition()
+        public void MultiplicationAndAddition()
         {
-            var input = new [] {10, 7};
+            var input = new [] {10, 7, 2};
             int target=24;
             ISolution solution;
-            var solver = new ProgressiveRecursiveBruteForceSolver();
+            var solver = new ProgressiveRecursiveSolver();
             bool solved = solver.GetSolution(input, target, out solution);
             Assert.AreEqual(true, solved);
             Assert.AreEqual(2, solution.NumberOfOperations);
@@ -42,12 +38,12 @@ namespace DeepRecursiveSolverTests
         }
 
         [Test]
-        public void SolveDivisionAndSubtraction()
+        public void DivisionAndSubtraction()
         {
             var input = new[] {10, 50, 1};
             int target= 4;
             ISolution solution;
-            var solver = new ProgressiveRecursiveBruteForceSolver();
+            var solver = new ProgressiveRecursiveSolver();
             bool solved = solver.GetSolution(input, target, out solution);
             Assert.AreEqual(true, solved);
             Assert.AreEqual(2, solution.NumberOfOperations);
@@ -60,7 +56,7 @@ namespace DeepRecursiveSolverTests
             var input = new[] {10, 5};
             int target = 3;
             ISolution solution;
-            var solver = new ProgressiveRecursiveBruteForceSolver();
+            var solver = new ProgressiveRecursiveSolver();
             bool solved = solver.GetSolution(input, target, out solution);
             Assert.AreEqual(false, solved);
         }

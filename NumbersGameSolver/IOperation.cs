@@ -6,9 +6,9 @@
     /// </summary>
     public interface IOperation
     {
-        int FirstOperand { get; }
+        int Lhs { get; }
         Operator Operator { get; }
-        int SecondOperand { get; }
+        int Rhs { get; }
         int Result { get; }
         string DisplayString { get; }
     }

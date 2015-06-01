@@ -49,7 +49,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DeepRecursiveUndoingSolver.cs" />
-    <Compile Include="ProgressiveRecursiveBruteForceSolver.cs" />
+    <Compile Include="ProgressiveRecursiveSolver.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

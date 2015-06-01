@@ -15,7 +15,7 @@ namespace ScottLogic.NumbersGame.ReferenceAlgorithms
     /// 
     /// This solution is exclusively single-threaded, leaving room for improvement on multi-core machines.
     /// </summary>
-    public class ProgressiveRecursiveBruteForceSolver : IGameSolver
+    public class ProgressiveRecursiveSolver : IGameSolver
     {
         private readonly List<INumbersGame> _wip = new List<INumbersGame>(60); // work in progress
 

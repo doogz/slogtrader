@@ -16,14 +16,14 @@ namespace ScottLogic.NumbersGame
 
     public struct Operation : IOperation
     {
-        public int FirstOperand { get; private set; }
-        public int SecondOperand { get; private set; }
+        public int Lhs { get; private set; }
+        public int Rhs { get; private set; }
         public Operator Operator { get; private set; }
         public int Result
         {
             get
             {
-                int res = Apply(FirstOperand, SecondOperand, Operator);
+                int res = Apply(Lhs, Rhs, Operator);
                 if (res == 0)
                 {
                     throw new InvalidOperationException("The result of this operation is not defined.");
@@ -36,8 +36,8 @@ namespace ScottLogic.NumbersGame
         {
             // First operand must be >= second in all cases; operators - and / demand it so (within the rules of the game)
             bool firstBigger = i > j;
-            FirstOperand = firstBigger ? i : j;
-            SecondOperand = firstBigger ? j : i;
+            Lhs = firstBigger ? i : j;
+            Rhs = firstBigger ? j : i;
             Operator = op;
         }
 
@@ -60,7 +60,7 @@ namespace ScottLogic.NumbersGame
         }
         public string DisplayString
         {
-            get { return String.Format("{0} {1} {2} = {3}", FirstOperand, OperatorDescription(Operator), SecondOperand, Result); }
+            get { return String.Format("{0} {1} {2} = {3}", Lhs, OperatorDescription(Operator), Rhs, Result); }
         }
 
         public static bool IsValid(int n1, int n2, Operator op)
@@ -78,7 +78,7 @@ namespace ScottLogic.NumbersGame
                     return !(n1 == 1 || n2 == 1);
 
                 case Operator.Division:
-                    // if n1 > n2 then n1%n2 must be 0
+                    if (n1 == 1 || n2 == 1) return false;
                     return (n1 >= n2) ? (n1%n2 == 0) : (n2%n1 == 0);
                 
                 default:

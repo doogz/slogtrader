@@ -66,8 +66,8 @@ namespace ScottLogic.NumbersGame.Game
 
         public void DoOperation(IOperation op) // int idx1, int idx2, Operator op, out int lhs, out int rhs)
         {
-            int idx1 = _numbers.FindIndex(i => i == op.FirstOperand); // Index of first occurence of Lhs operand
-            int idx2 = _numbers.FindIndex(i => i == op.SecondOperand);
+            int idx1 = _numbers.FindIndex(i => i == op.Lhs); // Index of first occurence of Lhs operand
+            int idx2 = _numbers.FindIndex(i => i == op.Rhs);
 
             // We'll overwrite the value at idx1, and erase the value at idx2
             // If idx2 < idx1, when restoring, we'll be off by one
@@ -109,11 +109,17 @@ namespace ScottLogic.NumbersGame.Game
         public List<INumbersGame> CreateAllDescendents()
         {
             var games = new List<INumbersGame>();
-            for (int i=0; i<NumberCount-1;++i)
-                for (int j=i+1; j<NumberCount; ++j)
-                    foreach(Operator op in OperationValues)
-                        if (Operation.IsValid(i, j, op))
-                            games.Add(CreateDescendent(new Operation(i, j, op)));
+            for (int i = 0; i < NumberCount - 1; ++i)
+            {
+                int n1 = _numbers[i];
+                for (int j = i + 1; j < NumberCount; ++j)
+                {
+                    int n2 = _numbers[j];
+                    games.AddRange(from op in OperationValues 
+                                   where Operation.IsValid(n1, n2, op) 
+                                   select CreateDescendent(new Operation(n1, n2, op)));
+                }
+            }
             return games;
         }
         public bool IsSolved

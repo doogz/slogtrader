@@ -6,19 +6,35 @@ namespace ScottLogic.NumbersGame
 {
     public static class SolverFactory
     {
-        // This would do for any (generic) factory; indeed the interface return type could be the second type for a generic Factory<T,I>
+        // This would do for any (generic) factory
         private static readonly List<Type> _solvers = new List<Type>();
+        
+        private static readonly List<string> _solverDescriptions = new List<string>();
 
-
-        private static readonly List<string> _algorithmNames = new List<string>();
-        public static void Register(Type t)
+        public static void Register(Type t, string typeDescription)
         {
             _solvers.Add(t);
+            _solverDescriptions.Add(typeDescription);
         }
 
-        public static IGameSolver CreateSolver()
+        public static IEnumerable<string> GetSolverDescriptions()
         {
-            return !_solvers.Any() ? null : CreateSolver(_solvers[0]);
+            return _solverDescriptions;
+        }
+
+        public static string GetSolverDescription(int index)
+        {
+            return _solverDescriptions[index];
+        }
+
+        public static int RegisteredSolvers
+        {
+            get { return _solvers.Count; }
+        }
+
+        public static IGameSolver CreateSolver(int idx=0)
+        {
+            return !_solvers.Any() || idx >= _solvers.Count ? null : CreateSolver(_solvers[idx]);
         }
 
         public static IGameSolver CreateSolver(string algoName)

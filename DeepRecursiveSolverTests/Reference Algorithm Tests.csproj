@@ -7,8 +7,8 @@
     <ProjectGuid>{C58357C0-759D-40A5-A68A-CA898FFE7D15}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ScottLogic.NumbersGame.ReferenceAlgorithms.DeepRecursiveSolverTests</RootNamespace>
-    <AssemblyName>DeepRecursiveSolverTests</AssemblyName>
+    <RootNamespace>ScottLogic.NumbersGame.ReferenceAlgorithms.Tests</RootNamespace>
+    <AssemblyName>ReferenceAlgorithmTests</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -40,9 +40,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DRSolverTests.cs" />
+    <Compile Include="DeepRecursiveUndoingSolverTestFixture.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="PRSolverTests.cs" />
+    <Compile Include="ProgressiveRecursiveSolverTestFixture.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DeepRecursiveSolver\Reference Algorithms.csproj">

@@ -1,6 +1,6 @@
 ﻿using NUnit.Framework;
 
-namespace ScottLogic.NumbersGame.ReferenceAlgorithms.DeepRecursiveSolverTests
+namespace ScottLogic.NumbersGame.ReferenceAlgorithms.Tests
 {
     [TestFixture]
     public class DeepRecursiveUndoingSolverTestFixture
@@ -11,7 +11,7 @@ namespace ScottLogic.NumbersGame.ReferenceAlgorithms.DeepRecursiveSolverTests
         [SetUp]
         public void Setup()
         {
-            _solver = new ScottLogic.NumbersGame.ReferenceAlgorithms.DeepRecursiveUndoingSolver();
+            _solver = new DeepRecursiveUndoingSolver();
         }
 
         [TearDown]
