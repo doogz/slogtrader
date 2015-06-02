@@ -17,6 +17,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Competition", "Competition\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Competition Tests", "CompetitionTests\Competition Tests.csproj", "{08EE25F3-9C96-48C1-BE2D-5686186CF87C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NumbersGame Web Service (library)", "NumbersGameWebServiceLibrary\NumbersGame Web Service (library).csproj", "{87C796BC-F0DC-4443-BB13-FC9048543881}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +53,10 @@ Global
 		{08EE25F3-9C96-48C1-BE2D-5686186CF87C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{08EE25F3-9C96-48C1-BE2D-5686186CF87C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{08EE25F3-9C96-48C1-BE2D-5686186CF87C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{87C796BC-F0DC-4443-BB13-FC9048543881}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{87C796BC-F0DC-4443-BB13-FC9048543881}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{87C796BC-F0DC-4443-BB13-FC9048543881}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{87C796BC-F0DC-4443-BB13-FC9048543881}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
